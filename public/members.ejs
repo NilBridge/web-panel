@@ -1,0 +1,75 @@
+<script src="static/js/jquery.dataTables.min.js"></script>
+<script src="static/js/dataTables.bootstrap4.min.js"></script>
+
+<script
+    src="https://themesdesign.in/xoric/layouts/blue/vertical/assets/libs/datatables.net-autoFill/js/dataTables.autoFill.min.js"></script>
+<script
+    src="https://themesdesign.in/xoric/layouts/blue/vertical/assets/libs/datatables.net-autoFill-bs4/js/autoFill.bootstrap4.min.js"></script>
+
+<script src="static/js/dataTables.keyTable.min.js"></script>
+<!-- Responsive examples -->
+<script src="static/js/dataTables.responsive.min.js"></script>
+
+<script src="static/js/index.js"></script>
+
+<script src="static/js/table-editable.init.js"></script>
+
+
+<div class="page-content-wrapper">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-body">
+
+                        <h4 class="header-title">成员统计列表</h4>
+                        <div class="table-responsive">
+                            <table class="table table-editable">
+                                <thead>
+                                    <tr>
+                                        <th>QQ</th>
+                                        <th>XBOXID</th>
+                                        <th>加入</th>
+                                        <th>游玩时间(分钟)</th>
+                                        <th>操作</th>
+                                    </tr>
+                                </thead>
+                                <% for(var i in players){ let pl=players[i]%>
+                                    <tr>
+                                        <td>
+                                            <%= i %>
+                                        </td>
+                                        <td>
+                                            <%= pl.xboxid %>
+                                        </td>
+                                        <td>
+                                        <a href="#" data-type="text" data-pk="<%= pl.join %>" class="editable"
+                                            data-url="" data-title="Edit Quantity">
+                                            <%= pl.join %>
+                                        </a></td>
+                                        <td>
+                                        <a href="#" data-type="text" data-pk="<%= (pl.period/(1000*60)).toFixed(2) %>" class="editable"
+                                            data-url="" data-title="Edit Quantity">
+                                            <%= (pl.period/(1000*60)).toFixed(2) %>
+                                        </a></td>
+                                        <td>
+                                            <button type="button" class="btn btn-primary btn-sm waves-effect waves-light">移除</button>
+                                            <button type="button" class="btn btn-primary btn-sm waves-effect waves-light">编辑</button>
+                                        </td>
+                                    </tr>
+                                    <% } %>
+                            </table>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div> <!-- end col -->
+        </div> <!-- end row -->
+
+    </div>
+    <!-- end container-fluid -->
+</div>
+<!-- end page-content-wrapper -->
+</div>
+<!-- End Page-content -->

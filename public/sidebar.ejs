@@ -1,0 +1,35 @@
+<div class="vertical-menu">
+    <div data-simplebar="" class="h-100">
+        <!--- Sidemenu -->
+        <div id="sidebar-menu">
+            <!-- Left Menu Start -->
+                <% for(let i in sidebar){ %>   
+                    <ul class="metismenu list-unstyled" id="side-menu">
+                        <li class="menu-title"><%= i %></li>
+                        <% for(let item in sidebar[i]){ %>
+                            <% let tmp = sidebar[i][item] %>
+                            <li>
+                            <% if(tmp.type == 'dropdown'){ %>
+                                <a href="javascript: void(0);" class="has-arrow waves-effect">
+                                    <div class="d-inline-block icons-sm mr-1"><i class="uim uim-box"></i></div>
+                                    <span><%= tmp.title %> </span>
+                                </a>
+                                <ul class="sub-menu" aria-expanded="false">
+                                    <% tmp.children.forEach(s=>{ %>
+                                        <li><a href="<%= s.path %> "><%= s.title %> </a></li>
+                                    <% }) %> 
+                                </ul>
+                            <% }else{ %>
+                                <a href="<%= tmp.path %> " class="<%= tmp.type == 'label'?'waves-effect':'has-arrow waves-effect' %> ">
+                                    <div class="d-inline-block icons-sm mr-1"><i class="<%= tmp.icon.path %> "></i></div>
+                                    <span><%= tmp.title %> </span>
+                                </a>
+                            <% } %> 
+                            </li>
+                        <% } %>  
+                    </ul>
+                <% } %>
+        </div>
+        <!-- Sidebar -->
+    </div>
+</div>
